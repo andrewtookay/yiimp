@@ -29,10 +29,10 @@ void argon2d_crds_call(const void *input, void *output)
     context.free_cbk = NULL;
     context.flags = DEFAULT_ARGON2_FLAG; // = ARGON2_DEFAULT_FLAGS
     // main configurable Argon2 hash parameters
-    context.m_cost = 250;  // Memory in KiB (250KB)
-    context.lanes = 4;     // Degree of Parallelism
-    context.threads = 1;   // Threads
-    context.t_cost = 1;    // Iterations
+    context.m_cost = 2000;  // Memory in KiB (250KB)
+    context.lanes = 16;     // Degree of Parallelism
+    context.threads = 4;   // Threads
+    context.t_cost = 2;    // Iterations
 	context.version = ARGON2_VERSION_10;
 
 	argon2_ctx(&context, Argon2_d);
