@@ -11,7 +11,7 @@ function yaamp_get_algos()
 		'allium',
 		'argon2',
 		'argon2d250',
-		'argon2d-dyn',
+		'argon2d500',
 		'argon2d4096',
 		'aergo',
 		'balloon',
@@ -112,13 +112,13 @@ function yaamp_get_algos()
 		'yespowerURX',
 		'whirlpool',
 		'zr5',
-		
+
 		'astralhash',
 		'globalhash',
 		'jeonghash',
 		'padihash',
 		'pawelhash',
-		
+
 	);
 }
 
@@ -159,7 +159,7 @@ function yaamp_get_algo_norm($algo)
 		'x13'		=> 1.0,
 		'argon2'	=> 1.0,
 		'argon2d250'	=> 1.0,
-		'argon2d-dyn'	=> 1.0,
+		'argon2d500'	=> 1.0,
 		'argon2d4096'	=> 1.0,
 		'lyra2'		=> 1.0,
 		'lyra2v2'	=> 1.0,
@@ -223,7 +223,7 @@ function getAlgoColors($algo)
 		'allium'	=> '#80a0d0',
 		'argon2'	=> '#e0d0e0',
 		'argon2d250'	=> '#e0d0e0',
-		'argon2d-dyn'	=> '#e0d0e0',
+		'argon2d500'	=> '#e0d0e0',
 		'argon2d4096'	=> '#e0d0e0',
 		'aergo'		=> '#e0d0e0',
 		'bastion'	=> '#e0b0b0',
@@ -252,8 +252,9 @@ function getAlgoColors($algo)
 		'penta'		=> '#80c0c0',
 		'nist5'		=> '#c0e0e0',
 		'quark'		=> '#c0c0c0', 
+		'quark'		=> '#c0c0c0',
 		'qubit'		=> '#d0a0f0',
-		'rainforest'	=> '#d0f0a0', 
+		'rainforest'	=> '#d0f0a0',
 		'renesis'	=> '#f0b0a0',
 		'lyra2'		=> '#80a0f0',
 		'lyra2TDC'		=> '#80a0f0',
@@ -298,13 +299,13 @@ function getAlgoColors($algo)
 		'zr5'		=> '#d0b0d0',
 		'lbk3'		=> '#809aef',
 		'lyra2'		=> '#80a0f0',
-		
+
 		'astralhash' => '#e2d0d2',
 		'globalhash' => '#e2d0d2',
 		'jeonghash' => '#e2d0d2',
 		'padihash' => '#e2d0d2',
 		'pawelhash' => '#e2d0d2',
-		
+
 
 		'MN'		=> '#ffffff', // MasterNode Earnings
 		'PoS'		=> '#ffffff'  // Stake
@@ -360,7 +361,7 @@ function getAlgoPort($algo)
 		'neoscrypt'	=> 4233,
 		'argon2'	=> 4234,
 		'argon2d250'	=> 4238,
-		'argon2d-dyn'	=> 4239,
+		'argon2d500'	=> 4239,
 		'argon2d4096'	=> 4240,
 		'scryptn'	=> 4333,
 		'allium'	=> 4443,
@@ -429,13 +430,13 @@ function getAlgoPort($algo)
 		'minotaur'	=> 7018,
 		'megabtx'	=> 7066,
 		'megamec'	=> 7067,
-		
+
 		'astralhash'   	=> 8640,
 		'globalhash'   	=> 8650,
 		'jeonghash'   	=> 8660,
 		'padihash'   	=> 8670,
 		'pawelhash'   	=> 8680,
-		
+
 	);
 
 	global $configCustomPorts;
