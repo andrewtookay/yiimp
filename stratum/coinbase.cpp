@@ -202,7 +202,7 @@ void coinbase_create(YAAMP_COIND *coind, YAAMP_JOB_TEMPLATE *templ, json_value *
 		//debuglog("%s %d dests %s\n", coind->symbol, npayees, script_dests);
 		return;
 	}
-	
+
 	else if(strcmp(coind->symbol, "DYN") == 0)
 	{
 		char script_dests[2048] = { 0 };
@@ -1394,22 +1394,6 @@ void coinbase_create(YAAMP_COIND *coind, YAAMP_JOB_TEMPLATE *templ, json_value *
 			strcat(templ->coinb2, "01");
 		}
 	}
-
-	if(strcmp(coind->algo, "lyra2TDC") == 0)            ////////// новое //////////
-    {
-        if (templ->BackWhither.size() > 15)
-            sprintf(templ->coinb2+strlen(templ->coinb2), "%hhX", int(templ->BackWhither.size() + 1));
-        else
-            sprintf(templ->coinb2+strlen(templ->coinb2), "0%hhX", int(templ->BackWhither.size() + 1));
-
-        job_pack_tx(coind, templ->coinb2, available, NULL);
-
-        vector<string>::const_iterator i;
-        for(i = templ->BackWhither.begin(); i != templ->BackWhither.end(); ++i)
-            sprintf(templ->coinb2+strlen(templ->coinb2), "%s", (*i).c_str());
-
-        strcat(templ->coinb2, "00000000"); // tBlock
-    }
 
 	else if (templ->has_segwit_txs) {
 		strcat(templ->coinb2, "02");

@@ -154,7 +154,6 @@ YAAMP_ALGO g_algos[] =
 	{"lbry", lbry_hash, 0x100, 0, 0},
 	{"luffa", luffa_hash, 1, 0, 0},
 	{"lyra2", lyra2re_hash, 0x80, 0, 0},
-	{"lyra2TDC", lyra2TDC_hash, 0x100, 0, 0},
 	{"lyra2v2", lyra2v2_hash, 0x100, 0, 0},
 	{"lyra2v3", lyra2v3_hash, 0x100, 0, 0},
 	{"lyra2vc0ban", lyra2vc0ban_hash, 0x100, 0, 0},
@@ -222,10 +221,10 @@ YAAMP_ALGO g_algos[] =
 	{"yespowerLITB", yespowerLITB_hash, 0x10000, 0, 0 }, //LightBit[LITB]
 	{"yespowerLTNCG", yespowerLTNCG_hash, 0x10000, 0, 0 }, //LightningCash Gold[LNC]
 	{"yespowerR16", yespowerR16_hash, 0x10000, 0, 0 },
-	{"yespowerRES", yespowerRES_hash, 0x10000, 0, 0 }, //Resistanse[RES] 
-	{"yespowerSUGAR", yespowerSUGAR_hash, 0x10000, 0, 0 }, //Sugarchain[SUGAR] 
-	{"yespowerTIDE", yespowerTIDE_hash, 0x10000, 0, 0 }, //Tidecoin[TDC] 
-	{"yespowerURX", yespowerURX_hash, 0x10000, 0, 0 }, //UraniumX[URX] 
+	{"yespowerRES", yespowerRES_hash, 0x10000, 0, 0 }, //Resistanse[RES]
+	{"yespowerSUGAR", yespowerSUGAR_hash, 0x10000, 0, 0 }, //Sugarchain[SUGAR]
+	{"yespowerTIDE", yespowerTIDE_hash, 0x10000, 0, 0 }, //Tidecoin[TDC]
+	{"yespowerURX", yespowerURX_hash, 0x10000, 0, 0 }, //UraniumX[URX]
 	{"whirlcoin", whirlpool_hash, 1, 0, sha256_hash_hex }, /* old sha merkleroot */
 	{"whirlpool", whirlpool_hash, 1, 0 }, /* sha256d merkleroot */
 	{"whirlpoolx", whirlpoolx_hash, 1, 0, 0},

@@ -8,7 +8,7 @@ CXXFLAGS = -O2 -I.. -march=native
 CFLAGS= $(CXXFLAGS) -std=gnu99
 LDFLAGS=-O2 -lgmp
 
-SOURCES=lyra2re.c lyra2v2.c Lyra2.c lyra2z.c lyra2z330.c Lyra2-z.c Sponge.c allium.c SWIFFTX/SWIFFTX.c lyra2vc0ban.c lyra2v3.c lyra2TDC.c \
+SOURCES=lyra2re.c lyra2v2.c Lyra2.c lyra2z.c lyra2z330.c Lyra2-z.c Sponge.c allium.c SWIFFTX/SWIFFTX.c lyra2vc0ban.c lyra2v3.c \
 	c11.c x11.c x12.c x13.c hsr14.c x14.c x15.c x17.c x17r.c x18.c x11k.c x11kvs.c \
 	blake.c blakecoin.c blake2s.c jha.c keccak.c lbry.c tribus.c \
 	deep.c fresh.c groestl.c neoscrypt.c nist5.c quark.c qubit.c skein.c skein2.c bmw512.c \
@@ -23,7 +23,7 @@ SOURCES=lyra2re.c lyra2v2.c Lyra2.c lyra2z.c lyra2z330.c Lyra2-z.c Sponge.c alli
 	hive.c pomelo.c hex.c argon2d.c geek.c bcd.c \
 	phi.c phi2.c phi5.c polytimos.c rainforest.c renesis.c skunk.c sib.c veltor.c gost.c aergo.c x22i.c x21s.c lbk3.c pipehash.c dedal.c x20r.c gltalgos.c lane.c x25x.c \
 	beenode.c honeycomb/facet_one.c honeycomb/facet_two.c honeycomb/facet_three.c honeycomb/facet_four.c honeycomb/facet_five.c honeycomb/facet_six.c honeycomb/facets_helper.c \
-	
+
 OBJECTS=$(SOURCES:%.c=%.o) $(SOURCES:%.cpp=%.o) $(SOURCES:%.cc=%.o)
 OUTPUT=libalgos.a
 
@@ -44,4 +44,4 @@ $(OUTPUT): $(OBJECTS)
 clean:
 	rm -f *.o
 	rm -f ar2/*.o
-	rm -f blake2/*.o	
+	rm -f blake2/*.o

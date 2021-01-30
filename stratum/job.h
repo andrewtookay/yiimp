@@ -30,7 +30,7 @@ struct YAAMP_JOB_TEMPLATE
 
 	char extradata_hex[512];
 	char extradata_be[512];
-	
+
 	char mr_hex[512];
 
 	// todo: can use extra field
@@ -65,8 +65,6 @@ struct YAAMP_JOB_TEMPLATE
 
 	int auxs_size;
 	YAAMP_COIND_AUX *auxs[MAX_AUXS];
-	
-	vector<string> BackWhither;
 };
 
 #define YAAMP_JOB_MAXSUBIDS		200
@@ -86,7 +84,7 @@ public:
 	YAAMP_COIND *coind;			// either one of them
 	YAAMP_REMOTE *remote;
 	YAAMP_JOB_TEMPLATE *templ;
-	
+
 	bool remote_subids[YAAMP_JOB_MAXSUBIDS];
 };
 
@@ -137,9 +135,3 @@ void coinbase_create(YAAMP_COIND *coind, YAAMP_JOB_TEMPLATE *templ, json_value *
 vector<string> coind_aux_hashlist(YAAMP_COIND_AUX **auxs, int size);
 vector<string> coind_aux_merkle_branch(YAAMP_COIND_AUX **auxs, int size, int index);
 void coind_aux_build_auxs(YAAMP_JOB_TEMPLATE *templ);
-
-
-
-
-
-

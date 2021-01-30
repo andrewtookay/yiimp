@@ -283,7 +283,7 @@ YAAMP_JOB_TEMPLATE *coind_create_template(YAAMP_COIND *coind)
 		json_value_free(json);
 		return NULL;
 	}
-	
+
 	json_value *json_coinbaseaux = json_get_object(json_result, "coinbaseaux");
 	if(!json_coinbaseaux && coind->isaux)
 	{
@@ -305,20 +305,20 @@ YAAMP_JOB_TEMPLATE *coind_create_template(YAAMP_COIND *coind)
 	strcpy(templ->nbits, bits ? bits : "");
 	const char *prev = json_get_string(json_result, "previousblockhash");
 	strcpy(templ->prevhash_hex, prev ? prev : "");
-	 
+
 	 // yespowerRES
     if (!strcmp(g_stratum_algo, "yespowerRES")) {
         const char *finalsaplingroothash = json_get_string(json_result, "finalsaplingroothash");
         strcpy(templ->extradata_hex, finalsaplingroothash ? finalsaplingroothash : "");
         string_be(templ->extradata_hex,templ->extradata_be);
     }
-	
+
 	const char *flags;
 	if(!json_coinbaseaux && coind->isaux)
 		flags = json_get_string(json_coinbaseaux, "flags");
 		else
 		flags = NULL;
-	
+
 	strcpy(templ->flags, flags ? flags : "");
 
 	// LBC Claim Tree (with wallet gbt patch)
@@ -410,23 +410,6 @@ YAAMP_JOB_TEMPLATE *coind_create_template(YAAMP_COIND *coind)
 	templ->has_filtered_txs = false;
 	templ->filtered_txs_fee = 0;
 
-	if (!strcmp(g_stratum_algo, "lyra2TDC")) 
-	{
-		json_value *json_FeeBack = json_get_array(json_result, "FeeBack");
-		if(!json_FeeBack)
-		{
-			coind_error(coind, "getblocktemplate FeeBack");
-			json_value_free(json);
-			return NULL;
-		}
-		
-		for(int i = 0; i < json_FeeBack->u.array.length; i++) 
-		{
-			const char *bw = json_get_string(json_FeeBack->u.array.values[i], "BackWhither");
-			templ->BackWhither.push_back(bw);
-		}
-	}
-	
 	for(int i = 0; i < json_tx->u.array.length; i++)
 	{
 		const char *p = json_get_string(json_tx->u.array.values[i], "hash");
@@ -461,9 +444,9 @@ YAAMP_JOB_TEMPLATE *coind_create_template(YAAMP_COIND *coind)
 			templ->has_filtered_txs = true;
 		}
 	}
-	
+
 	std::cerr << "[1] Txes count: " << templ->txdata.size() << std::endl;
-	
+
     // for yespowerRES we need to insert coinbasetxn here
     if (!strcmp(g_stratum_algo, "yespowerRES")) {
 
@@ -490,7 +473,7 @@ YAAMP_JOB_TEMPLATE *coind_create_template(YAAMP_COIND *coind)
                 json_value_free(json);
                 return NULL;
             }
-			
+
         char hash_be[256] = { 0 };
         string_be(p, hash_be);
 
@@ -512,14 +495,14 @@ YAAMP_JOB_TEMPLATE *coind_create_template(YAAMP_COIND *coind)
             for (std::string::iterator it=hex.begin(); it != hex.end(); it += 2) std::swap(it[0], it[1]);
             std::string hex_reversed(hex.rbegin(), hex.rend());
             std::cerr << "[" << i << "] \"" << txsteps[i] << "\" - " "\"" << hex_reversed << "\""<< std::endl;
-            
+
 
         }
         */
-           
 
-      
-        if (txsteps.size() > 0) 
+
+
+        if (txsteps.size() > 0)
 
         {
             std::string mr = merkle_with_first(txsteps, hash_be);
@@ -528,7 +511,7 @@ YAAMP_JOB_TEMPLATE *coind_create_template(YAAMP_COIND *coind)
             std::string hex_reversed(hex.rbegin(), hex.rend());
             //std::cerr << hex_reversed << std::endl;
             strcpy(templ->mr_hex,hex_reversed.c_str());
-        } else 
+        } else
         {
             std::string hex(p);
             //for (std::string::iterator it=hex.begin(); it != hex.end(); it += 2) std::swap(it[0], it[1]);
@@ -536,7 +519,7 @@ YAAMP_JOB_TEMPLATE *coind_create_template(YAAMP_COIND *coind)
             strcpy(templ->mr_hex,hex.c_str());
         }
 
-		
+
         // standart - merkle_arr = txsteps = templ->txmerkles       - // https://github.com/slushpool/poclbm-zcash/wiki/Stratum-protocol-changes-for-ZCash
         // equishash&yespowerRES - merkle_arr->merkleroot (including coinbase)  - // https://en.bitcoin.it/wiki/Stratum_mining_protocol#mining.notify
 
@@ -550,7 +533,7 @@ YAAMP_JOB_TEMPLATE *coind_create_template(YAAMP_COIND *coind)
         */
 
     }
-	
+
 	if (templ->has_filtered_txs) {
 		// coinbasevalue is a total with all tx fees, need to reduce it if some are skipped
 		templ->value -= templ->filtered_txs_fee;
@@ -716,18 +699,3 @@ bool coind_create_job(YAAMP_COIND *coind, bool force)
 
 	return true;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
