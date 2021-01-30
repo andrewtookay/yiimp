@@ -10,6 +10,7 @@ extern "C" {
 void argon2d_250_hash(const char* input, char* output, unsigned int len);
 void argon2d_500_hash(const char* input, char* output, unsigned int len);
 void argon2d_4096_hash(const char* input, char* output, unsigned int len);
+void argon2d_16000_hash(const char* input, char* output, unsigned int len);
 
 #ifdef __cplusplus
 }
