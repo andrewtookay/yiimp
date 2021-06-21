@@ -140,63 +140,63 @@ function BackendCoinsUpdate()
 			if($coin->symbol == 'TAC' && isset($template['_V2']))
 				$coin->charity_amount = $template['_V2']/100000000;
 
-			if(isset($template['payee_amount']) && $coin->symbol != 'LIMX') 
+			if(isset($template['payee_amount']) && $coin->symbol != 'LIMX')
 			{
 				$coin->charity_amount = doubleval($template['payee_amount'])/100000000;
 				$coin->reward -= $coin->charity_amount;
 			}
 
-			else if(isset($template['masternode']) && arraySafeVal($template,'masternode_payments_enforced')) 
+			else if(isset($template['masternode']) && arraySafeVal($template,'masternode_payments_enforced'))
 			{
 				if (arraySafeVal($template,'masternode_payments_started'))
 				$coin->reward -= arraySafeVal($template['masternode'],'amount',0)/100000000;
 				$coin->hasmasternodes = true;
 			}
 
-			else if($coin->symbol == 'XZC') 
+			else if($coin->symbol == 'XZC')
 			{
 				// coinbasevalue here is the amount available for miners, not the full block amount
 				$coin->reward = arraySafeVal($template,'coinbasevalue')/100000000 * $coin->reward_mul;
 				$coin->charity_amount = $coin->reward * $coin->charity_percent / 100;
 			}
-				
-			else if($coin->symbol == 'BNODE') 
+
+			else if($coin->symbol == 'BNODE')
 			{
-                   if(isset($template['masternode'])) 
+                   if(isset($template['masternode']))
 				{
 					if (arraySafeVal($template,'masternode_payments_started'))
 					$coin->reward -= arraySafeVal($template['masternode'],'amount',0)/100000000;
 				}
-				if(isset($template['evolution'])) 
+				if(isset($template['evolution']))
 				{
 					$coin->reward -= arraySafeVal($template['evolution'],'amount',10000000)/100000000;
 				}
            	}
-				
-			else if($coin->symbol == 'BCRS') 
+
+			else if($coin->symbol == 'ADOT')
 			{
-				if(isset($template['masternode'])) 
+				if(isset($template['masternode']))
 				{
 					if (arraySafeVal($template,'masternode_payments_started'))
 					$coin->reward -= arraySafeVal($template['masternode'],'amount',0)/100000000;
 				}
-				
-				if(isset($template['fundreward'])) 
+
+				if(isset($template['fundreward']))
 				{
 					$coin->reward -= arraySafeVal($template['fundreward'],'amount',0)/100000000;
 				}
-			}				
+			}
 
-			else if($coin->symbol == 'IOTS') 
+			else if($coin->symbol == 'IOTS')
 			{
-				if(isset($template['masternode'])) 
+				if(isset($template['masternode']))
 				{
 					if (arraySafeVal($template,'masternode_payments_started'))
 					$coin->reward -= arraySafeVal($template['masternode'],'amount',0)/100000000;
 				}
-			}				
-			
-			else if(!empty($coin->charity_address)) 
+			}
+
+			else if(!empty($coin->charity_address))
 			{
 				if(!$coin->charity_amount)
 				$coin->reward -= $coin->reward * $coin->charity_percent / 100;
@@ -227,8 +227,8 @@ function BackendCoinsUpdate()
 					$target = decode_compact($template['bits']);
 					$coin->difficulty = target_to_diff($target);
 				}
-			} 
-			else 
+			}
+			else
 			{
 				$coin->auto_ready = false;
 				$coin->errors = $remote->error;
@@ -350,7 +350,3 @@ function BackendCoinsUpdate()
 	$d1 = microtime(true) - $t1;
 	controller()->memcache->add_monitoring_function(__METHOD__, $d1);
 }
-
-
-
-

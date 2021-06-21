@@ -772,8 +772,8 @@ void coinbase_create(YAAMP_COIND *coind, YAAMP_JOB_TEMPLATE *templ, json_value *
 	return;
 	}
 
-		//  CRDS rename to BCRS
-	if (strcmp(coind->symbol, "BCRS") == 0)
+		//  BCRS rename to ADOT
+	if (strcmp(coind->symbol, "ADOT") == 0)
 {
 	char payees[4];
 	int npayees = 1;
