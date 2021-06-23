@@ -121,7 +121,7 @@ YAAMP_ALGO g_algos[] =
 	{"argon2d250", argon2d_250_hash, 0x10000, 0, 0 },
 	{"argon2d500", argon2d_500_hash, 0x10000, 0, 0 },
 	{"argon2d4096", argon2d_4096_hash, 0x10000, 0, 0 },
-	{"argon2d16000", argon2d_4096_hash, 0x10000, 0, 0 },
+	{"argon2d16000", argon2d_16000_hash, 0x10000, 0, 0 },
 	{"astralhash", astralhash_hash, 0x100, 0, 0},
 	{"bastion", bastion_hash, 1, 0 },
 	{"bcd", bcd_hash, 1, 0, 0},
